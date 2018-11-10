@@ -9,25 +9,31 @@ function validateString(str) {
             tempArray.push(charsArray[i]);
         }
         else {
-            let char = tempArray.pop();
-            switch (charsArray[i]) {
-                case "]":
-                    if (char == "[") {
-                        break;
-                    }
-
-                case "}":
-                    if (char == "{") {
-                        break;
-                    }
-
-                case ")":
-                    if (char == "(") {
-                        break;
-                    }
-                default:
-                    return false;
+            if (tempArray.length > 0) {
+                let char = tempArray.pop();
+                switch (charsArray[i]) {
+                    case "]":
+                        if (char == "[") {
+                            break;
+                        }
+    
+                    case "}":
+                        if (char == "{") {
+                            break;
+                        }
+    
+                    case ")":
+                        if (char == "(") {
+                            break;
+                        }
+                    default:
+                        return false;
+                }
             }
+            else{
+                return false;
+            }
+
         }
     }
     return (tempArray == 0);
